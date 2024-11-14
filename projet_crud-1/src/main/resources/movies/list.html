@@ -1,0 +1,38 @@
+<!-- src/main/resources/templates/movies/list.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Films</title>
+</head>
+<body>
+    <h1>Liste des Films</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Réalisateur</th>
+                <th>Genre</th>
+                <th>Année de Sortie</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="movie : ${movies}">
+                <td th:text="${movie.title}"></td>
+                <td th:text="${movie.director}"></td>
+                <td th:text="${movie.genre}"></td>
+                <td th:text="${movie.releaseYear}"></td>
+                <td th:text="${movie.status}"></td>
+                <td>
+                    <a th:href="@{/movies/edit/{id}(id=${movie.id})}">Modifier</a> |
+                    <a th:href="@{/movies/delete/{id}(id=${movie.id})}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce film ?');">Supprimer</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <a href="/movies/add">Ajouter un nouveau film</a>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!-- src/main/resources/templates/movies/add.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un Film</title>
+</head>
+<body>
+    <h1>Ajouter un Film</h1>
+    <form action="#" th:action="@{/movies/add}" th:object="${movie}" method="post">
+        <label for="title">Titre :</label>
+        <input type="text" id="title" th:field="*{title}" required/>
+        <br>
+        
+        <label for="director">Réalisateur :</label>
+        <input type="text" id="director" th:field="*{director}" required/>
+        <br>
+
+        <label for="genre">Genre :</label>
+        <input type="text" id="genre" th:field="*{genre}" required/>
+        <br>
+
+        <label for="releaseYear">Année de Sortie :</label>
+        <input type="number" id="releaseYear" th:field="*{releaseYear}" required/>
+        <br>
+
+        <label for="status">Statut :</label>
+        <select id="status" th:field="*{status}" required>
+            <option value="disponible">Disponible</option>
+            <option value="emprunté">Emprunté</option>
+        </select>
+        <br>
+
+        <button type="submit">Ajouter</button>
+    </form>
+    <br>
+    <a href="/movies">Retour à la liste des films</a>
+</body>
+</html>
